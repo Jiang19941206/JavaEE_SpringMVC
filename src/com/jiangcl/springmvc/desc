@@ -1,0 +1,16 @@
+SpringMVC
+    RequestMapping的请求参数和请求头
+    @RequestMapping(value = "/hello",params = {"userName","age!=10","!address"},headers = {})
+    params = {param1,param2!=0,!param3}里面的表达式含义
+        请求此URL必须有param1，param2，不能包含param3，并且param2的值不能等于0
+    headers里面的规则与params里面的规则一样
+
+    @RequestParam映射请求参数
+        @RequestParam(value = "userName",required = false,defaultValue = ""
+            value：参数名
+            required：该参数是否必须，默认值为true
+            defaultValue：该请求参数的默认值，如果该参数为基本数据类型，且为必须参数，需要给此属性赋个初始值
+
+    @RequestHeader映射请求头
+
+    @CookieValue映射cookie信息
