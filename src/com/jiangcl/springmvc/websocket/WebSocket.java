@@ -95,12 +95,12 @@ public class WebSocket {
      * @throws IOException
      */
     public void sendMessageTo(String message, String to) throws IOException {
-        System.out.println("将消息 '" + message + "' 发送用户 '" + to + "'");
         /*for (WebSocket item : clients.values()) {
             if (item.username.equals(To) )
                 item.session.getAsyncRemote().sendText(message);
         }*/
         if(!StringUtils.isEmpty(to)){
+            System.out.println("将消息 '" + message + "' 发送用户 '" + to + "'");
             WebSocket webSocket = clients.get(to);
             if(webSocket != null){
                 webSocket.session.getAsyncRemote().sendText(message);

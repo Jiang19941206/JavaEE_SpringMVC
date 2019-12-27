@@ -34,7 +34,7 @@ public class WebSocketController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String dateStr = formatter.format(localDateTime);
         message = message + dateStr;
-        //webSocket.sendMessageTo(message,userName);
-        webSocket.sendMessageAll(message);
+        webSocket.sendMessageTo(message,userName);
+        //webSocket.sendMessageAll(message);
     }
 }
