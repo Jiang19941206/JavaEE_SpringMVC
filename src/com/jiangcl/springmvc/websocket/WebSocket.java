@@ -100,9 +100,9 @@ public class WebSocket {
                 item.session.getAsyncRemote().sendText(message);
         }*/
         if(!StringUtils.isEmpty(to)){
-            System.out.println("将消息 '" + message + "' 发送用户 '" + to + "'");
             WebSocket webSocket = clients.get(to);
             if(webSocket != null){
+                System.out.println("将消息 '" + message + "' 发送用户 '" + to + "'");
                 webSocket.session.getAsyncRemote().sendText(message);
             }
         }
@@ -117,8 +117,8 @@ public class WebSocket {
      * @return void
      */
     public void sendMessageAll(String message) throws IOException {
-        System.out.println("将消息 '" + message + "' 发送给全部用户");
         for (WebSocket item : clients.values()) {
+            System.out.println("将消息 '" + message + "' 发送用户 '" + item.username + "'");
             item.session.getAsyncRemote().sendText(message);
         }
     }

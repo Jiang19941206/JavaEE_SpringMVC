@@ -1,5 +1,10 @@
 package com.jiangcl.springmvc.demo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 /**
  * @author jiangcl
  * @date 2019/12/25
@@ -11,6 +16,10 @@ public class UserDomain {
     private String password;
 
     private Integer age;
+
+    //将前端传过来的字符串转换为日期格式
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date birthDay;
 
     private Address address;
 
@@ -46,12 +55,23 @@ public class UserDomain {
         this.address = address;
     }
 
+    //使用注解格式化日期
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
+
     @Override
     public String toString() {
         return "UserDomain{" +
                 "userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", age=" + age +
+                ", birthDay=" + birthDay +
                 ", address=" + address +
                 '}';
     }

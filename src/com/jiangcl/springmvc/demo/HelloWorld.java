@@ -1,10 +1,10 @@
 package com.jiangcl.springmvc.demo;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * @author jiangcl
@@ -35,8 +35,16 @@ public class HelloWorld {
      * @return
      */
     @RequestMapping("/userInfo")
-    public String hello(UserDomain userDomain){
+    public String hello(UserDomain userDomain, @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")Date reqDate){
         System.out.println(userDomain.toString());
+        System.out.println(reqDate);
         return "hello";
+    }
+
+    @RequestMapping("/respInfo")
+    @ResponseBody
+    public UserDomain returnUserDomain(UserDomain userDomain){
+        System.out.println(userDomain);
+        return userDomain;
     }
 }
