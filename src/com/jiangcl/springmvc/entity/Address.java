@@ -1,4 +1,4 @@
-package com.jiangcl.springmvc.demo;
+package com.jiangcl.springmvc.entity;
 
 /**
  * @author jiangcl

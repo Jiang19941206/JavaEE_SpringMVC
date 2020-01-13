@@ -1,9 +1,14 @@
 package com.jiangcl.springmvc.demo;
 
+import com.alibaba.fastjson.JSONObject;
+import com.jiangcl.springmvc.entity.UserDomain;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -44,6 +49,30 @@ public class HelloWorld {
     @RequestMapping("/respInfo")
     @ResponseBody
     public UserDomain returnUserDomain(UserDomain userDomain){
+        System.out.println(userDomain);
+        return userDomain;
+    }
+
+    @RequestMapping("/writeInfo")
+    public void returnUserDomain(UserDomain userDomain, HttpServletResponse response) throws IOException {
+        System.out.println(userDomain);
+        String jsonString = JSONObject.toJSONString(userDomain);
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/Json");
+        PrintWriter writer = response.getWriter();
+        writer.print(jsonString);
+    }
+
+    /**
+     * @desc 使用RequestBody接收json参数
+     * @author jiangcl
+     * @date 2020/1/13
+     * @param userDomain
+     * @return com.jiangcl.springmvc.entity.UserDomain
+     */
+    @RequestMapping("/respBody")
+    @ResponseBody
+    public UserDomain responseBody(@RequestBody UserDomain userDomain){
         System.out.println(userDomain);
         return userDomain;
     }
